@@ -6,19 +6,6 @@ An AI-assisted Tier-1 analyst for the **Wazuh SIEM**. When Wazuh raises an alert
 - **index every incident** into the Wazuh indexer, with a ready-made dashboard,
 - post a one-line summary to Slack or Discord.
 
-```
- Wazuh manager                        soc-triage service (systemd)
- ┌──────────────┐  level >= 10   ┌───────────────────────────────────────────────────────┐
- │ rules fire   │──────────────▶ │ spool/ ─▶ parse ─▶ enrich ─▶ score ─▶ LLM ─▶ report    │
- │ integratord  │  custom hook   │           (SQLite    (0-100,   (Ollama,  (Markdown, │
- └──────────────┘  copies alert  │           history)    floor)    validated) JSON,     │
-                   to spool      │                                          webhook)   │
-                                 └───────────────────────────────────────────────────────┘
-                                                  │ ticket          │ index
-                                                  ▼                 ▼
-                                           GitHub / Jira /     Wazuh indexer
-                                           TheHive             + dashboard
-```
 
 The core uses **only the Python standard library** (3.9+), so there is nothing to `pip install` on the Wazuh server.
 
