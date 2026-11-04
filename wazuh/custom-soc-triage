@@ -1,0 +1,9 @@
+#!/bin/sh
+# Launcher Wazuh calls for <name>custom-soc-triage</name>.
+# Runs custom-soc-triage.py with Wazuh's bundled Python, passing all arguments through.
+WPYTHON_BIN="framework/python/bin/python3"
+DIR_NAME="$(cd "$(dirname "$0")" && pwd -P)"
+SCRIPT_NAME="$(basename "$0")"
+WAZUH_PATH="$(cd "${DIR_NAME}/.." && pwd -P)"
+
+exec "${WAZUH_PATH}/${WPYTHON_BIN}" "${DIR_NAME}/${SCRIPT_NAME}.py" "$@"

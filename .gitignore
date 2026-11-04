@@ -1,0 +1,10 @@
+data/
+__pycache__/
+*.pyc
+
+# Never commit real credentials
+secrets.dev.env
+secrets.env
+
+# Lab output copied back from the VM
+lab-reports/

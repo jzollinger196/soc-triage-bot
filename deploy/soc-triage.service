@@ -1,0 +1,26 @@
+[Unit]
+Description=SOC triage bot (AI-assisted Wazuh alert triage)
+After=network-online.target wazuh-manager.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=soctriage
+Group=soctriage
+WorkingDirectory=/opt/soc-triage
+Environment=PYTHONUNBUFFERED=1
+# Secrets are read by the bot from /etc/soc-triage/secrets.env (root:soctriage 0640).
+ExecStart=/usr/bin/python3 -m soc_triage --config /etc/soc-triage/config.json worker
+Restart=on-failure
+RestartSec=5
+
+# Hardening: the worker only needs to write its own data directory.
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/soc-triage
+UMask=0007
+
+[Install]
+WantedBy=multi-user.target

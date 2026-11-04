@@ -1,0 +1,22 @@
+{
+  "timestamp": "2026-10-29T14:03:02.551-0400",
+  "rule": {
+    "level": 3,
+    "description": "sshd: authentication success.",
+    "id": "5715",
+    "mitre": {"id": ["T1078", "T1021"], "tactic": ["Defense Evasion", "Persistence", "Privilege Escalation", "Initial Access", "Lateral Movement"], "technique": ["Valid Accounts", "Remote Services"]},
+    "firedtimes": 1,
+    "mail": false,
+    "groups": ["syslog", "sshd", "authentication_success"],
+    "pci_dss": ["10.2.5"],
+    "nist_800_53": ["AU.14", "AC.7"]
+  },
+  "agent": {"id": "001", "name": "ubuntu-victim", "ip": "192.168.56.20"},
+  "manager": {"name": "wazuh-server"},
+  "id": "1793296982.93377",
+  "full_log": "Oct 29 14:03:02 ubuntu-victim sshd[2251]: Accepted password for root from 192.168.56.10 port 51302 ssh2",
+  "predecoder": {"program_name": "sshd", "timestamp": "Oct 29 14:03:02", "hostname": "ubuntu-victim"},
+  "decoder": {"parent": "sshd", "name": "sshd"},
+  "data": {"srcip": "192.168.56.10", "srcport": "51302", "dstuser": "root"},
+  "location": "journald"
+}

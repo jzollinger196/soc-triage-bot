@@ -1,0 +1,31 @@
+{
+  "_comment": "Config for the single-VM lab (docs/LAB-SINGLE-VM.md): Wazuh manager + bot on one Ubuntu VM named wazuh-lab, AI on Groq. Copy to /etc/soc-triage/config.json.",
+  "spool_dir": "/var/lib/soc-triage/spool",
+  "reports_dir": "/var/lib/soc-triage/reports",
+  "db_path": "/var/lib/soc-triage/history.db",
+  "secrets_file": "/etc/soc-triage/secrets.env",
+  "min_level": 10,
+  "correlation_window_minutes": 15,
+  "max_llm_raise": 15,
+  "internal_networks": ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16", "127.0.0.0/8"],
+  "_comment_privileged": "labadmin is the VM's admin (sudo) account created during the Ubuntu install.",
+  "privileged_accounts": ["root", "admin", "administrator", "ubuntu", "labadmin"],
+  "_comment_assets": "wazuh-lab is the VM's hostname; Wazuh reports the manager's own logs under that name.",
+  "asset_criticality": {
+    "wazuh-lab": "high"
+  },
+  "llm": {
+    "provider": "openai",
+    "model": "openai/gpt-oss-120b",
+    "base_url": "https://api.groq.com/openai/v1",
+    "timeout_seconds": 120,
+    "temperature": 0.1,
+    "max_retries": 1
+  },
+  "ticketing": {
+    "system": "none"
+  },
+  "indexer": {
+    "enabled": false
+  }
+}

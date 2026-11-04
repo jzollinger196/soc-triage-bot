@@ -1,0 +1,9 @@
+{
+  "01_ssh_invalid_user_bruteforce.json": "High",
+  "02_ssh_root_bruteforce.json": "High",
+  "03_ssh_login_success_after_bruteforce.json": "Critical",
+  "04_suricata_syn_flood.json": "High",
+  "05_web_scan_with_prompt_injection.json": "High",
+  "06_benign_single_failed_login.json": "Low",
+  "07_windows_rdp_bruteforce_external.json": "Critical"
+}

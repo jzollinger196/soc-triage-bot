@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-10-29T14:01:30.412-0400",
+  "rule": {
+    "level": 10,
+    "description": "sshd: brute force trying to get access to the system. Non existent user.",
+    "id": "5712",
+    "mitre": {"id": ["T1110"], "tactic": ["Credential Access"], "technique": ["Brute Force"]},
+    "frequency": 8,
+    "firedtimes": 1,
+    "mail": false,
+    "groups": ["syslog", "sshd", "authentication_failures"],
+    "pci_dss": ["11.4", "10.2.4", "10.2.5"],
+    "nist_800_53": ["SI.4", "AU.14", "AC.7"]
+  },
+  "agent": {"id": "001", "name": "ubuntu-victim", "ip": "192.168.56.20"},
+  "manager": {"name": "wazuh-server"},
+  "id": "1793296890.88231",
+  "previous_output": "Oct 29 14:01:29 ubuntu-victim sshd[2190]: Invalid user admin from 192.168.56.10 port 51198\nOct 29 14:01:29 ubuntu-victim sshd[2189]: Invalid user test from 192.168.56.10 port 51197\nOct 29 14:01:28 ubuntu-victim sshd[2188]: Invalid user oracle from 192.168.56.10 port 51196\nOct 29 14:01:28 ubuntu-victim sshd[2187]: Invalid user admin from 192.168.56.10 port 51195\nOct 29 14:01:27 ubuntu-victim sshd[2186]: Invalid user guest from 192.168.56.10 port 51194\nOct 29 14:01:27 ubuntu-victim sshd[2185]: Invalid user postgres from 192.168.56.10 port 51193\nOct 29 14:01:26 ubuntu-victim sshd[2184]: Invalid user admin from 192.168.56.10 port 51192",
+  "full_log": "Oct 29 14:01:30 ubuntu-victim sshd[2192]: Invalid user admin from 192.168.56.10 port 51200",
+  "predecoder": {"program_name": "sshd", "timestamp": "Oct 29 14:01:30", "hostname": "ubuntu-victim"},
+  "decoder": {"parent": "sshd", "name": "sshd"},
+  "data": {"srcip": "192.168.56.10", "srcport": "51200", "srcuser": "admin"},
+  "location": "journald"
+}

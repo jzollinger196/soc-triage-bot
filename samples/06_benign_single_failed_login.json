@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-10-29T09:15:04.120-0400",
+  "rule": {
+    "level": 5,
+    "description": "sshd: authentication failed.",
+    "id": "5760",
+    "mitre": {"id": ["T1110.001", "T1021.004"], "tactic": ["Credential Access", "Lateral Movement"], "technique": ["Password Guessing", "SSH"]},
+    "firedtimes": 1,
+    "mail": false,
+    "groups": ["syslog", "sshd", "authentication_failed"],
+    "pci_dss": ["10.2.4", "10.2.5"]
+  },
+  "agent": {"id": "003", "name": "workstation-01", "ip": "192.168.56.50"},
+  "manager": {"name": "wazuh-server"},
+  "id": "1793279704.4410",
+  "full_log": "Oct 29 09:15:04 workstation-01 sshd[1022]: Failed password for jdoe from 192.168.56.51 port 40122 ssh2",
+  "predecoder": {"program_name": "sshd", "timestamp": "Oct 29 09:15:04", "hostname": "workstation-01"},
+  "decoder": {"parent": "sshd", "name": "sshd"},
+  "data": {"srcip": "192.168.56.51", "srcport": "40122", "dstuser": "jdoe"},
+  "location": "journald"
+}

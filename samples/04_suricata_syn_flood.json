@@ -1,0 +1,38 @@
+{
+  "timestamp": "2026-10-29T14:20:15.302-0400",
+  "rule": {
+    "level": 10,
+    "description": "Suricata: possible SYN flood against 192.168.56.20 from 192.168.56.10",
+    "id": "100200",
+    "mitre": {"id": ["T1498.001"], "tactic": ["Impact"], "technique": ["Direct Network Flood"]},
+    "firedtimes": 1,
+    "mail": false,
+    "groups": ["local", "suricata", "ids", "dos"]
+  },
+  "agent": {"id": "001", "name": "ubuntu-victim", "ip": "192.168.56.20"},
+  "manager": {"name": "wazuh-server"},
+  "id": "1793298015.120044",
+  "full_log": "{\"timestamp\":\"2026-10-29T14:20:15.298712-0400\",\"flow_id\":1688213412093210,\"in_iface\":\"enp0s8\",\"event_type\":\"alert\",\"src_ip\":\"192.168.56.10\",\"src_port\":2410,\"dest_ip\":\"192.168.56.20\",\"dest_port\":80,\"proto\":\"TCP\",\"alert\":{\"action\":\"allowed\",\"gid\":1,\"signature_id\":1000001,\"rev\":1,\"signature\":\"LAB Possible SYN flood\",\"category\":\"Attempted Denial of Service\",\"severity\":2}}",
+  "decoder": {"name": "json"},
+  "data": {
+    "timestamp": "2026-10-29T14:20:15.298712-0400",
+    "flow_id": "1688213412093210",
+    "in_iface": "enp0s8",
+    "event_type": "alert",
+    "src_ip": "192.168.56.10",
+    "src_port": "2410",
+    "dest_ip": "192.168.56.20",
+    "dest_port": "80",
+    "proto": "TCP",
+    "alert": {
+      "action": "allowed",
+      "gid": "1",
+      "signature_id": "1000001",
+      "rev": "1",
+      "signature": "LAB Possible SYN flood",
+      "category": "Attempted Denial of Service",
+      "severity": "2"
+    }
+  },
+  "location": "/var/log/suricata/eve.json"
+}

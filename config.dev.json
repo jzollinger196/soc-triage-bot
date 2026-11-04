@@ -1,0 +1,18 @@
+{
+  "_comment": "Local development config: writes to ./data and uses the mock model. Switch provider to ollama once Ollama is running.",
+  "spool_dir": "data/spool",
+  "reports_dir": "data/reports",
+  "db_path": "data/history.db",
+  "secrets_file": "secrets.dev.env",
+  "asset_criticality": {
+    "ubuntu-victim": "high",
+    "win-dc01": "high",
+    "workstation-01": "low"
+  },
+  "llm": {
+    "provider": "mock",
+    "model": "llama3.2:3b",
+    "base_url": "http://127.0.0.1:11434",
+    "timeout_seconds": 300
+  }
+}

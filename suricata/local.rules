@@ -1,0 +1,4 @@
+# Lab detection for a SYN flood: more than 500 SYN packets to one destination in 5 seconds.
+# Install on the VICTIM at /etc/suricata/rules/local.rules and list it under rule-files
+# in /etc/suricata/suricata.yaml. Tune "count" if normal traffic on your lab trips it.
+alert tcp any any -> $HOME_NET any (msg:"LAB Possible SYN flood"; flow:stateless; flags:S,12; threshold:type both, track by_dst, count 500, seconds 5; classtype:attempted-dos; sid:1000001; rev:1;)

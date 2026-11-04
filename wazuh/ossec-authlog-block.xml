@@ -1,0 +1,9 @@
+<!-- soc-triage-bot: make the Wazuh manager read this machine's SSH login log.
+     Only append this if ossec.conf doesn't already read /var/log/auth.log or journald,
+     otherwise every event is counted twice. -->
+<ossec_config>
+  <localfile>
+    <log_format>syslog</log_format>
+    <location>/var/log/auth.log</location>
+  </localfile>
+</ossec_config>

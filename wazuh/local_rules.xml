@@ -1,0 +1,17 @@
+<!--
+  Add to /var/ossec/etc/rules/local_rules.xml on the Wazuh MANAGER.
+  Wazuh's stock rule 86601 logs every Suricata alert at level 3. This child rule
+  raises our lab SYN-flood signature (sid 1000001, see suricata/local.rules) to
+  level 10 so it reaches the triage bot, and tags it with MITRE T1498.001.
+  Test with: sudo /var/ossec/bin/wazuh-logtest
+-->
+<group name="local,suricata,ids,dos,">
+  <rule id="100200" level="10">
+    <if_sid>86601</if_sid>
+    <field name="alert.signature_id">^1000001$</field>
+    <description>Suricata: possible SYN flood against $(dest_ip) from $(src_ip)</description>
+    <mitre>
+      <id>T1498.001</id>
+    </mitre>
+  </rule>
+</group>

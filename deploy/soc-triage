@@ -1,0 +1,11 @@
+#!/bin/sh
+# Command-line wrapper installed as /usr/local/bin/soc-triage.
+# Runs the bot as the soctriage service account, so the database, reports and secrets
+# keep the right owner.
+#   soc-triage check
+#   soc-triage ticket INC-20261029-95017a2b
+cd /opt/soc-triage || exit 1
+if [ "$(id -un)" = "soctriage" ]; then
+  exec python3 -m soc_triage --config /etc/soc-triage/config.json "$@"
+fi
+exec sudo -u soctriage python3 -m soc_triage --config /etc/soc-triage/config.json "$@"

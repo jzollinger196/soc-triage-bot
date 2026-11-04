@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-10-29T14:02:11.087-0400",
+  "rule": {
+    "level": 10,
+    "description": "sshd: brute force trying to get access to the system. Authentication failed.",
+    "id": "5763",
+    "mitre": {"id": ["T1110"], "tactic": ["Credential Access"], "technique": ["Brute Force"]},
+    "frequency": 8,
+    "firedtimes": 1,
+    "mail": false,
+    "groups": ["syslog", "sshd", "authentication_failures"],
+    "pci_dss": ["11.4", "10.2.4", "10.2.5"],
+    "nist_800_53": ["SI.4", "AU.14", "AC.7"]
+  },
+  "agent": {"id": "001", "name": "ubuntu-victim", "ip": "192.168.56.20"},
+  "manager": {"name": "wazuh-server"},
+  "id": "1793296931.90412",
+  "previous_output": "Oct 29 14:02:10 ubuntu-victim sshd[2211]: Failed password for root from 192.168.56.10 port 51238 ssh2\nOct 29 14:02:10 ubuntu-victim sshd[2210]: Failed password for root from 192.168.56.10 port 51236 ssh2\nOct 29 14:02:09 ubuntu-victim sshd[2209]: Failed password for root from 192.168.56.10 port 51234 ssh2\nOct 29 14:02:09 ubuntu-victim sshd[2208]: Failed password for root from 192.168.56.10 port 51232 ssh2\nOct 29 14:02:08 ubuntu-victim sshd[2207]: Failed password for root from 192.168.56.10 port 51230 ssh2\nOct 29 14:02:08 ubuntu-victim sshd[2206]: Failed password for root from 192.168.56.10 port 51228 ssh2\nOct 29 14:02:07 ubuntu-victim sshd[2205]: Failed password for root from 192.168.56.10 port 51226 ssh2",
+  "full_log": "Oct 29 14:02:11 ubuntu-victim sshd[2213]: Failed password for root from 192.168.56.10 port 51240 ssh2",
+  "predecoder": {"program_name": "sshd", "timestamp": "Oct 29 14:02:11", "hostname": "ubuntu-victim"},
+  "decoder": {"parent": "sshd", "name": "sshd"},
+  "data": {"srcip": "192.168.56.10", "srcport": "51240", "dstuser": "root"},
+  "location": "journald"
+}

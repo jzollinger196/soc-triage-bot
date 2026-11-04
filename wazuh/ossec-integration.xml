@@ -1,0 +1,21 @@
+<!--
+  Paste both blocks inside <ossec_config> ... </ossec_config> in
+  /var/ossec/etc/ossec.conf on the Wazuh MANAGER, then:
+      sudo systemctl restart wazuh-manager
+-->
+
+<!-- 1. Every alert at level 10 or higher goes to the triage bot. -->
+<integration>
+  <name>custom-soc-triage</name>
+  <level>10</level>
+  <alert_format>json</alert_format>
+</integration>
+
+<!-- 2. Successful logins (low level) are also sent, so the bot can spot
+     "login succeeded after a brute force from the same IP". On their own they are
+     only recorded for correlation; no LLM call and no report. -->
+<integration>
+  <name>custom-soc-triage</name>
+  <group>authentication_success</group>
+  <alert_format>json</alert_format>
+</integration>

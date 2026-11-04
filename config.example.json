@@ -1,0 +1,43 @@
+{
+  "_comment": "Production config. install.sh copies this to /etc/soc-triage/config.json. Passwords and tokens go in /etc/soc-triage/secrets.env, never here.",
+  "spool_dir": "/var/lib/soc-triage/spool",
+  "reports_dir": "/var/lib/soc-triage/reports",
+  "db_path": "/var/lib/soc-triage/history.db",
+  "secrets_file": "/etc/soc-triage/secrets.env",
+  "min_level": 10,
+  "correlation_window_minutes": 15,
+  "max_llm_raise": 15,
+  "internal_networks": ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16", "127.0.0.0/8"],
+  "privileged_accounts": ["root", "admin", "administrator", "ubuntu"],
+  "_comment_assets": "Keys must match the agent names shown in the Wazuh dashboard.",
+  "asset_criticality": {
+    "ubuntu-victim": "high",
+    "win-dc01": "high",
+    "workstation-01": "low"
+  },
+  "webhook_url": "",
+  "webhook_type": "slack",
+  "llm": {
+    "provider": "ollama",
+    "model": "llama3.1:8b",
+    "base_url": "http://127.0.0.1:11434",
+    "timeout_seconds": 120,
+    "temperature": 0.1,
+    "max_retries": 1
+  },
+  "ticketing": {
+    "_comment": "system: none | github | jira | thehive",
+    "system": "none",
+    "auto_severities": ["High", "Critical"],
+    "github": {"repo": "your-github-user/soc-lab-incidents", "labels": ["soc-triage"]},
+    "jira": {"url": "https://your-site.atlassian.net", "project_key": "SOC", "issue_type": "Task", "api_version": 3},
+    "thehive": {"url": "http://192.168.56.100:9000", "tlp": 2, "pap": 2}
+  },
+  "indexer": {
+    "enabled": false,
+    "url": "https://127.0.0.1:9200",
+    "index": "soc-triage-incidents",
+    "verify_tls": true,
+    "ca_cert": "/etc/soc-triage/indexer-root-ca.pem"
+  }
+}

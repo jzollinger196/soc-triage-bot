@@ -1,0 +1,34 @@
+{
+  "timestamp": "2026-10-29T15:05:12.733-0400",
+  "rule": {
+    "level": 10,
+    "description": "Multiple Windows logon failures.",
+    "id": "60204",
+    "mitre": {"id": ["T1110"], "tactic": ["Credential Access"], "technique": ["Brute Force"]},
+    "frequency": 8,
+    "firedtimes": 1,
+    "mail": false,
+    "groups": ["windows", "windows_security", "authentication_failures"],
+    "pci_dss": ["10.2.4", "10.2.5", "11.4"]
+  },
+  "agent": {"id": "002", "name": "win-dc01", "ip": "192.168.56.30"},
+  "manager": {"name": "wazuh-server"},
+  "id": "1793300712.160210",
+  "full_log": "{\"win\":{\"system\":{\"eventID\":\"4625\",\"computer\":\"win-dc01.lab.local\",\"message\":\"An account failed to log on.\"},\"eventdata\":{\"targetUserName\":\"Administrator\",\"targetDomainName\":\"LAB\",\"logonType\":\"3\",\"ipAddress\":\"203.0.113.45\",\"ipPort\":\"53122\",\"failureReason\":\"%%2313\",\"workstationName\":\"-\"}}}",
+  "decoder": {"name": "windows_eventchannel"},
+  "data": {
+    "win": {
+      "system": {"eventID": "4625", "computer": "win-dc01.lab.local"},
+      "eventdata": {
+        "targetUserName": "Administrator",
+        "targetDomainName": "LAB",
+        "logonType": "3",
+        "ipAddress": "203.0.113.45",
+        "ipPort": "53122",
+        "failureReason": "%%2313",
+        "workstationName": "-"
+      }
+    }
+  },
+  "location": "EventChannel"
+}
